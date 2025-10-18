@@ -1,0 +1,44 @@
+[project]
+name = "webcam-fingers-count"
+version = "0.0.1"
+description = """
+Contador de dedos em tempo real usando Python, MediaPipe e OpenCV. 
+Detecta e rastreia mãos, conta os dedos de cada mão e exibe o total na tela. 
+Código orientado a objetos, com tipagem estática, docstrings detalhadas e 
+modularização para máxima legibilidade e aprendizado.
+"""
+authors = [{ name = "Heitor Dairel" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12" # Minimum Python version required
+dependencies = [
+    "auto-py-to-exe>=2.48.1",
+    "mediapipe>=0.10.14",
+    "opencv-python>=4.12.0.88",
+    "rich>=14.2.0",
+]
+
+[tool.pyright]
+typeCheckingMode = "basic"
+reportAttributeAccessIssue = "none"
+pythonVersion = "3.12"
+include = ["src", "tests"]
+exclude = [
+    "**/venv",
+    "**/.venv",
+    "**/env",
+    "**/.env",
+    "**/node_modules",
+    "**/__pycache__",
+]
+venv = ".venv"
+venvPath = "."
+# executionEnvironments = [{ root = "src" }]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-s --color=yes --tb=short"
+# Adiciona 'src' ao path do Python durante os testes. Isso permite que
+# os testes em `tests/` importem os módulos de `src/` sem erros.
